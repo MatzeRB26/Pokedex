@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="shortcut icon"
+            href="./assets/icons/Pkmfovicon.png"
+            type="image/x-icon"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="./css/cards.css" />
+        <link rel="stylesheet" href="./css/standard.css" />
+        <script src="./js/template.js" defer></script>
+        <script src="./script.js" defer></script>
+        <title>Pokédex</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="top-content">
+                <img src="./assets/icons/pokemon-logo.png" alt="pokémon-logo" />
+                <div class="search-bar">
+                    <input id="search-input" type="text" placeholder="Search Pokémon" />
+                    <button id="searchButton">Search</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="bg-img">
+                <img src="./assets/icons/Pokedex-bg.jpg" alt="background-img" />
+            </div>
+
+            <div class="pokemon-collection">
+            <section class="pokemon-collection">
+                <div id="pokemon-container"></div>
+            </section>
+            </div>
+        </main>
+
+        <button id="load-more" class="load-more" onclick="loadMore()">
+            Load more Pokémon
+        </button>
+
+        <dialog id="card-dialog">
+            <button id="closeDialog" onclick="closeDialog()">X</button>
+            <div id="dialogContent"></div>
+        </dialog>
+
+        <footer>
+            <div class="bottom-content">
+                <p>Gotta Catch 'emAll !</p>
+            </div>
+        </footer>
+
+    </body>
+</html>
