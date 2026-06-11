@@ -1,21 +1,11 @@
-async function loadPokemon(id) {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    const pokemon = await response.json();
-
-    renderPokemon(pokemon);
-}
-
-async function loadFirstPokemon() {
-    for (let i = 1; i <= 40; i++) {
-        await loadPokemon(i);
-    }
-}
-loadFirstPokemon();
-
-function renderPokemon(pokemon) {
-    const pokemonContainer = document.getElementById("pokemon-container");
-    pokemonContainer.innerHTML += getPokemonCardTemplate(pokemon);
-}
+// function loadMorePokemons() {
+//     for (let i = 1; i <= 20; i++) {
+//         innerHTML += loadPokemon(i);
+//     }
+//     const pokemonContainer = document.getElementById("load-more");
+//     pokemonContainer.innerHTML += getPokemonCardTemplate(pokemon);
+// }
+// loadMore();
 
 // function getTypeColor(type) {
 //     const colors = {
@@ -40,63 +30,3 @@ function renderPokemon(pokemon) {
 //     };
 //     return colors[type] || "#A8A878";
 // }
-
-
-// function loadMore() {
-//     for (let i = 1; i <= 20; i++) {
-//         innerHTML += loadPokemon(i);
-//     }
-//     const pokemonContainer = document.getElementById("load-more");
-//     pokemonContainer.innerHTML += getPokemonCardTemplate(pokemon);
-// }
-// loadMore();
-
-//#region Dialog-----------------------------------------------------------------------
-function openDialog(index) {
-    const PkmDialog = document.getElementById("card-dialog");
-    updateDialog();
-    document.body.style.overflow = "hidden";
-    dialog.showModal();
-}
-
-function closeDialog() {
-    const PkmDialog = document.getElementById("card-dialog");
-    document.body.style.overflow = "auto";
-    dialog.close();
-
-    function updateDialog() {
-    const dialogCard = document.getElementById("dialogContent");
-    fetchPokemon();
-}
-}
-
-function leftBtn() {
-    currentPkmCardIndex--;
-    if (currentPkmCardIndex < 0) {
-        currentPkmCardIndex = allPokemon.length - 1;
-    }
-    updateDialog();
-}
-
-function rightBtn() {
-    currentPkmCardIndex++;
-    if (currentPkmCardIndex >= allPokemon.length) {
-        currentPkmCardIndex = 0;
-    }
-    updateDialog();
-}
-
-document.addEventListener("keydown", function(e) {
-    if (dialog.open) {
-        if (e.key === "Enter") {
-            rightBtn();
-        }
-        if (e.key === "ArrowLeft") {
-            leftBtn();
-        }
-        if (e.key === "ArrowRight") {
-            rightBtn();
-        }
-    }
-});
-// #endregion---------------------------------------------------------------------------

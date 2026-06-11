@@ -3,11 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="shortcut icon"
-            href="./assets/icons/Pkmfovicon.png"
-            type="image/x-icon"
-        />
+        <link rel="shortcut icon" href="./assets/icons/Pkmfovicon.png" type="image/x-icon" />
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="./css/cards.css" />
         <link rel="stylesheet" href="./css/standard.css" />
@@ -18,41 +14,23 @@
 
     <body>
         <header>
-            <div class="top-content">
-                <img src="./assets/icons/pokemon-logo.png" alt="pokémon-logo" />
-                <div class="search-bar">
-                    <input id="search-input" type="text" placeholder="Search Pokémon" />
-                    <button id="searchButton">Search</button>
-                </div>
-            </div>
+            <h1>Gotta Catch 'emAll !</h1>
+            <img src="./assets/icons/pokemon-logo.png" alt="pokémon-logo" />
+            <input id="search-input" type="text" placeholder="Search Pokémon" />
+            <button id="search-button">Search</button>
         </header>
 
-        <main>
+        <main data-id="content">
             <div class="bg-img">
                 <img src="./assets/icons/Pokedex-bg.jpg" alt="background-img" />
             </div>
-
-            <div class="pokemon-collection">
-            <section class="pokemon-collection">
-                <div id="pokemon-container"></div>
-            </section>
-            </div>
         </main>
-
-        <button id="load-more" class="load-more" onclick="loadMore()">
-            Load more Pokémon
-        </button>
-
-        <dialog id="card-dialog">
-            <button id="closeDialog" onclick="closeDialog()">X</button>
-            <div id="dialogContent"></div>
-        </dialog>
-
-        <footer>
-            <div class="bottom-content">
-                <p>Gotta Catch 'emAll !</p>
-            </div>
-        </footer>
-
+        <div class="more-wrapper">
+            <button id="load-more-button" onclick="loadMore()">Load more</button>
+        </div>
+            <footer>
+                <p>Matzes Pokedex &copy; 2026</p>
+            </footer>
+                <dialog id="card-dialog"></dialog>
     </body>
 </html>

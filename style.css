@@ -103,7 +103,7 @@ footer::before {
     background: linear-gradient(to top, rgb(75, 2, 2), rgb(0, 0, 0));
 }
 
-.load-more {
+#load-more {
     display: flex;
     justify-content: center;
     align-items: center;
