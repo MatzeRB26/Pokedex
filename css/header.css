@@ -1,0 +1,48 @@
+header {
+    height: 130px;
+    background: rgb(75, 2, 2);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: -1;
+}
+
+header img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 80px;
+}
+
+header h1 {
+    color: white;
+}
+
+header[data-id="search-input"]{
+border: 2px solid #3b4cca;
+border-radius: 18px;
+padding: 2px 8px;
+box-shadow: 2px 2px 5px 0px rgb(255, 255, 255, 0.3);
+}
+
+button[data-id="search-button"] {
+    border: 2px solid #3b4cca;
+    color: #ffcc00;
+    border-radius: 5px;
+    padding: 2px 8px;
+    box-shadow: 2px 2px 5px 0px rgb(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    transform: translateY(100%);
+    background: linear-gradient(to bottom, rgb(75, 2, 2), rgb(0, 0, 0));
+}

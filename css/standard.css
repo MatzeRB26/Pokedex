@@ -7,20 +7,10 @@
     position: relative;
     list-style: none;
     font-size: inherit;
-    color: inherit;
-    font-family: inherit;
     background: initial;
     border: initial;
-    color: white;
-    font-family: "Nunito";
-}
-
-.main-content {
-    width: 100%;
-    max-width: 1920px;
-    padding: 0 max(calc(50% - 720px), 16px);
-    display: flex;
-    align-items: center;
+    color: inherit;
+    font-family: inherit;
 }
 
 @font-face {
@@ -32,14 +22,11 @@
 }
 
 body {
-    min-width: 100dvh;
+    font-family: "Nunito" , suns-serive;
+    min-height: 100vh;
+    background: url(../assets/icons/Pokedex-bg.jpg);
 }
 
-/* .content {
-    width: 100%;
-    height: 100%;
-    max-width: 1920px;
-    padding: 0 max(calc(50% - 720px), 16px);
-    display: flex;
-    align-items: center;
-} */
+h1, h2, h3{
+    font-family: "Nunito";
+}
