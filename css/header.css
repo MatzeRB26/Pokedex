@@ -3,24 +3,23 @@ header {
     background: rgb(75, 2, 2);
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
     z-index: -1;
+    gap: 15px;
+}
+header h1 {
+    color: white;
 }
 
 header img {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
+    width: 150px;
     height: 80px;
 }
 
-header h1 {
-    color: white;
-}
-
-header[data-id="search-input"]{
+input[data-id="search-input"]{
 border: 2px solid #3b4cca;
 border-radius: 18px;
 padding: 2px 8px;
@@ -39,10 +38,11 @@ button[data-id="search-button"] {
 header::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
     height: 120px;
     transform: translateY(100%);
     background: linear-gradient(to bottom, rgb(75, 2, 2), rgb(0, 0, 0));
+    z-index: -1;
 }

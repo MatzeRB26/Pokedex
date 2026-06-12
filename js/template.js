@@ -1,9 +1,9 @@
 // #region Colors & Icons
 function getTypeColor(type) {
     const colors = {
-        fire: "#F08030",
-        water: "#6890F0",
-        grass: "#78C850",
+        fire: "#f08030",
+        water: "#6891f0",
+        grass: "#78c850", 
         electric: "#F8D030",
         psychic: "#F85888",
         ice: "#98D8D8",

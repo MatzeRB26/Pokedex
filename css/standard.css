@@ -23,7 +23,7 @@
 
 body {
     font-family: "Nunito" , suns-serive;
-    min-height: 100vh;
+    min-height: calc(100vh - 130px - 120px);
     background: url(../assets/icons/Pokedex-bg.jpg);
 }
 
