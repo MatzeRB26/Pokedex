@@ -21,12 +21,19 @@
     src: url("../assets/fonts/nunito-v32-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
+html, body{
+    height: 100%;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
     font-family: "Nunito" , suns-serive;
-    min-height: calc(100vh - 130px - 120px);
+    min-height: 100vh;
     background: url(../assets/icons/Pokedex-bg.jpg);
 }
 
 h1, h2, h3{
     font-family: "Nunito";
+    color: white;
 }

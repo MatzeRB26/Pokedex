@@ -8,12 +8,24 @@ main{
     margin: 0 auto;
 }
 
+main[data-id="content"]{
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    padding: 20px;
+    gap: 20px;
+}
+
 button[data-id="card"]{
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 18px;
     gap: 8px;
-    width: 210px;
+    width: 216px;
     padding: 20px;
     border-radius: 16px;
     border: 2px solid transparent;
@@ -29,7 +41,30 @@ button[data-id="card"]{
 
 button[data-id="card"]:hover{
     transform: translateY(-6px) scale(1.04);
-    border-color: blue;
+    border-color: #3b4cca;
     box-shadow: 0 8px 24px whitesmoke;
 }
 
+button[data-id="card"] span{
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+    align-self: flex-end;
+    text-transform: capitalize;
+}
+
+button[data-id="card"] .types{
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+button[data-id="card"] h2 {
+    font-size: 24px;
+}
+
+button[data-id="card"] img {
+        width: 140px;
+        height: 140px;
+    }

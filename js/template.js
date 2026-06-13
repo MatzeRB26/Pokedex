@@ -1,62 +1,7 @@
-// #region Colors & Icons
-function getTypeColor(type) {
-    const colors = {
-        fire: "#f08030",
-        water: "#6891f0",
-        grass: "#78c850", 
-        electric: "#F8D030",
-        psychic: "#F85888",
-        ice: "#98D8D8",
-        dragon: "#7038F8",
-        dark: "#705848",
-        fairy: "#EE99AC",
-        normal: "#A8A878",
-        fighting: "#C03028",
-        flying: "#A890F0",
-        poison: "#A040A0",
-        ground: "#E0C068",
-        rock: "#B8A038",
-        bug: "#A8B820",
-        ghost: "#705898",
-        steel: "#B8B8D0",
-    };
-    return colors[type] || "#A8A878";
-}
-
-function getTypeIcon(type) {
-    const icons = {
-        fire: "🔥",
-        water: "💧",
-        grass: "🌿",
-        electric: "⚡",
-        psychic: "🔮",
-        ice: "❄️",
-        dragon: "🐉",
-        dark: "🌑",
-        fairy: "✨",
-        normal: "⭐",
-        fighting: "👊",
-        flying: "🌪️",
-        poison: "☠️",
-        ground: "🪨",
-        rock: "💎",
-        bug: "🐛",
-        ghost: "👻",
-        steel: "⚙️",
-    };
-    return icons[type] || "❓";
-}
-// #endregion
-
 // #region Card Templates
 function createTypeBadges(types) {
     return types
-        .map(
-            (t) => `
-        <span class="type">${getTypeIcon(t.type.name)} ${t.type.name}</span>
-    `,
-        )
-        .join("");
+    .map( (t) => `<span class="type">${t.type.name}</span> `,).join("");
 }
 
 function createCardTemplate(pokemon) {
@@ -114,8 +59,7 @@ function createStatsTabTemplate(pokemon) {
             <div class="stat-bar-bg">
                 <div class="stat-bar" style="width: ${Math.min((stat.value / 255) * 100, 100)}%"></div>
             </div>
-        </div>
-    `,
+        </div>`,
         )
         .join("");
 }
@@ -130,8 +74,7 @@ function createEvoChainTemplate(evoDetails) {
                 <div class="evo-item">
                     <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
                     <span>${pokemon.name.toUpperCase()}</span>
-                </div>
-            `,
+                </div>`,
                 )
                 .join("")}
         </div>
@@ -142,11 +85,11 @@ function createDialogTopTemplate(pokemon) {
     const bgColor = getTypeColor(pokemon.types[0].type.name);
     return `
         <div class="dialog-top" style="background-color: ${bgColor}">
-            <button data-id="close-dialog-button" onclick="closeDialog()">✕</button>
+            <button data-id="close-dialog-button" onclick="closeDialog()">❌</button>
             <span class="dialog-id">#${pokemon.id}</span>
             <h2>${pokemon.name.toUpperCase()}</h2>
             <img data-id="dialog-image" src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
-            <div class="types">${createTypeBadges(pokemon.types)}</div>
+            <div class="Types">${createTypeBadges(pokemon.types)}</div>
         </div>
     `;
 }
@@ -165,11 +108,37 @@ function createDialogTemplate(pokemon) {
                 <div id="tab-stats" class="tab-content">${createStatsTabTemplate(pokemon)}</div>
                 <div id="tab-evo" class="tab-content"><p>Loading...</p></div>
                 <div class="dialog-nav">
-                    <button data-id="prev-button" onclick="navigateDialog(-1)">←</button>
-                    <button data-id="next-button" onclick="navigateDialog(1)">→</button>
+                    <button data-id="prev-button" onclick="navigateDialog(-1)">⬅️</button>
+                    <button data-id="next-button" onclick="navigateDialog(1)">➡️</button>
                 </div>
             </div>
         </div>
     `;
+}
+// #endregion
+
+// #region Colors
+function getTypeColor(type) {
+    const colors = {
+        fire: "#7e0000",
+        water: "#0638ad",
+        grass: "#277500d6",
+        electric: "#c69f00",
+        psychic: "#b80138",
+        ice: "#005f5f",
+        dragon: "#4c00ff",
+        dark: "#3f1a01",
+        fairy: "#bc5168",
+        normal: "#858535",
+        fighting: "#631c19",
+        flying: "#2c214d",
+        poison: "#2c122c",
+        ground: "#4c4121",
+        rock: "#B8A038",
+        bug: "#2c2f0a",
+        ghost: "#251938",
+        steel: "#484853",
+    };
+    return colors[type] || "#A8A878";
 }
 // #endregion

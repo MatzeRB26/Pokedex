@@ -20,20 +20,23 @@
 
     <body>
         <header>
+            <div class="header-inline">
             <img src="./assets/icons/pokemon-logo.png" alt="pokémon-logo" />
             <h1>Gotta Catch 'emAll !</h1>
-            <input data-id="search-input" type="text" placeholder="Search Pokémon" />
+            <input data-id="search-input" type="text" placeholder="Search Pokémon..." />
             <button data-id="search-button">Search</button>
+            </div>
         </header>
-        
 
-        <main data-id="content">
-        </main>
+        <main data-id="content"></main>
+        
         <div class="more-wrapper">
-            <button data-id="load-more-button" onclick="loadMore()">Load more</button>
+            <button data-id="load-more-button" onclick="loadMore()">Load More</button>
         </div>
             <footer>
+                <div class="footer-inline">
                 <p>Matzes Pokedex &copy; 2026</p>
+                </div>
             </footer>
                 <dialog data-id="dialog"></dialog>
     </body>

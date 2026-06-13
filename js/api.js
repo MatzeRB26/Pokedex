@@ -1,5 +1,5 @@
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
-const POKEMON_PER_LOAD = 24;
+const POKEMON_PER_LOAD = 20;
 
 let currentOffset = 0;
 let pokemonCache = {};

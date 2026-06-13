@@ -17,10 +17,9 @@ async function loadMorePokemons(button) {
     currentOffset += POKEMON_PER_LOAD;
     const pokemonList = await loadPokemons();
     const details = await Promise.all(
-        pokemonList.map((pokemon) => fetchPokemonDetails(pokemon.url)),
-    );
+        pokemonList.map((pokemon) => fetchPokemonDetails(pokemon.url)),); 
     renderCards(details);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     hideSpinner();
     button.disabled = false;
     button.textContent = "Load More";
@@ -32,6 +31,7 @@ function setupLoadMoreButton() {
 }
 
 function resetSearch() {
+    activPokemons = [];
     const main = document.querySelector("[data-id='content']");
     main.innerHTML = "";
     for (let i = 0; i < loadedPokemons.length; i++) {
