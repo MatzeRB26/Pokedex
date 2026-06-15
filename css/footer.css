@@ -52,7 +52,7 @@ button[data-id="load-more-button"] {
 
 button[data-id="load-more-button"]:hover {
     background: #3b4cca8f;
-    box-shadow: 0 0 8px whitesmoke;
+    box-shadow: 0 0 14px whitesmoke;
 }
 
 button[data-id="load-more-button"]:disabled{

@@ -1,4 +1,4 @@
-main{
+main {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -17,6 +17,21 @@ main [data-id="content"]{
     align-content: flex-start;
     padding: 20px;
     gap: 20px;
+}
+
+main [data-id="not-found"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 180px;
+    height: 80px;
+    font-weight: bold;
+    font-size: 20px;
+    border: 4px solid #3b4cca;
+    background-color: #ffcc00;
+    color: #ff0000;
+    border-radius: 10px;
 }
 
 button[data-id="card"]{
@@ -64,7 +79,7 @@ button[data-id="card"] img {
 .types {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 14px;
 }
 
 .type {
@@ -77,6 +92,5 @@ button[data-id="card"] img {
     border: 2px solid #3b4cca;
     display: flex;
     align-items: center;
-    gap: 4px;
     text-transform: capitalize;
 }
