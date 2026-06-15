@@ -1,3 +1,57 @@
-.spinner-overlay{
-    background: url(../assets/icons/Pokeball-spinner.gif);
+.spinner-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background: rgba(13, 13, 26, 0.8);
+    z-index: 999;
+}
+
+.pokemon-spinner {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: relative;
+    animation: spin 1.2s linear infinite;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.pokemon-spinner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(
+        to bottom,
+        #ff1c1c 0%,
+        #ff1c1c 48%,
+        #000 48%,
+        #000 52%,
+        #ffffff 52%,
+        #ffffff 100%
+    );
+}
+
+.pokemon-spinner::after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: white;
+    border: 5px solid black;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

@@ -89,7 +89,7 @@ function createDialogTopTemplate(pokemon) {
             <span class="dialog-id">#${pokemon.id}</span>
             <h2>${pokemon.name.toUpperCase()}</h2>
             <img data-id="dialog-image" src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
-            <div class="Types">${createTypeBadges(pokemon.types)}</div>
+            <div class="types">${createTypeBadges(pokemon.types)}</div>
         </div>
     `;
 }
@@ -108,8 +108,8 @@ function createDialogTemplate(pokemon) {
                 <div id="tab-stats" class="tab-content">${createStatsTabTemplate(pokemon)}</div>
                 <div id="tab-evo" class="tab-content"><p>Loading...</p></div>
                 <div class="dialog-nav">
-                    <button data-id="prev-button" onclick="navigateDialog(-1)">⬅️</button>
-                    <button data-id="next-button" onclick="navigateDialog(1)">➡️</button>
+                    <button data-id="prev-button" onclick="navigateDialog(-1)">←</button>
+                    <button data-id="next-button" onclick="navigateDialog(1)">→</button>
                 </div>
             </div>
         </div>

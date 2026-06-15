@@ -1,3 +1,219 @@
-dialog[data-id="dialog"]{
+dialog {
+    border-radius: 16px;
+    padding: 0;
+    max-width: 380px;
+    width: 90%;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+dialog::backdrop{
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+}
+
+.dialog-inner{
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid blue;
+}
+
+.dialog-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 24px 24px 16px;
+}
+
+.dialog-top, 
+.dialog-id {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+}
+
+.dialog-top h2{
+    font-size: 22px;
+    font-weight: 800;
     color: white;
 }
+
+button[data-id="close-dialog-button"]{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: black;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    z-index: 10;
+    transition: border-color 0.2s box-shadow 0.2 color 0.2;
+}
+
+button[data-id="close-dialog-button"]:hover{
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px white;
+    color: whitesmoke;
+}
+
+dialog [data-id="dialog-image"] {
+    width: 160px;
+    height: 160px;
+}
+
+.dialog-bottom{
+    background-color: whitesmoke;
+    padding: 16px 24px 24px;
+}
+
+.tabs {
+    display: flex;
+    gap: 4px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid black;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 16px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    background: #0638adba;
+}
+
+.tab-content {
+    display: none;
+    padding-top: 12px;
+    min-height: 160px;
+    font-size: 16px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid black;
+}
+
+.info-label {
+    font-weight: 600;
+    font-family: "Nunito";
+}
+
+.info-value {
+    font-weight: 700;
+    font-family: "Nunito";
+    text-transform: capitalize;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 0;
+}
+
+.stat-label {
+    width: 80px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: "Nunito";
+}
+
+.stat-value {
+    width: 32px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: "Nunito";
+}
+
+.stat-bar {
+    height: 100%;
+    border-radius: 4px;
+    background: #0638ad;
+}
+
+.stat-bar-bg {
+    flex: 1;
+    height: 8px;
+    background: #ffcc00;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.evo-chain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+}
+
+.evo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.evo-item img {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+.evo-item span {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.evo-arrow {
+    color: #0638ad;
+    font-size: 20px;
+}
+
+.dialog-nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+}
+
+.dialog-nav button {
+    border: 2px solid #0638ad;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    font-size: 20px;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        color 0.2s;
+}
+
+.dialog-nav button:hover {
+    border-color: #0638ad;
+    box-shadow: 0 0 12px #ffcc00;
+}
+

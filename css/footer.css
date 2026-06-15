@@ -30,6 +30,7 @@ footer {
     padding: 40px;
 }
 
+/* #region Load More Button */
 button[data-id="load-more-button"] {
     display: flex;
     justify-content: center;
@@ -58,3 +59,4 @@ button[data-id="load-more-button"]:disabled{
     opacity: 0.5;
     cursor: not-allowed;
 }
+/* #endregion */

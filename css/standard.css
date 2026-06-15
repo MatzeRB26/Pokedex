@@ -28,7 +28,7 @@ html, body{
 body {
     display: flex;
     flex-direction: column;
-    font-family: "Nunito" , suns-serive;
+    font-family: "Nunito" , sans-serive;
     min-height: 100vh;
     background: url(../assets/icons/Pokedex-bg.jpg);
 }

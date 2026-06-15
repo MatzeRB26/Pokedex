@@ -1,15 +1,4 @@
-function showSpinner() {
-    const spinner = document.createElement("div");
-    spinner.classList.add("spinner-overlay");
-    spinner.innerHTML = `<div class="pokeball-spinner"></div>`;
-    document.body.appendChild(spinner);
-}
-
-function hideSpinner() {
-    const spinner = document.querySelector(".spinner-overlay");
-    if (spinner) spinner.remove();
-}
-
+// #region Load Pokemons
 async function loadMorePokemons(button) {
     button.disabled = true;
     button.textContent = "Loading...";
@@ -29,17 +18,9 @@ function setupLoadMoreButton() {
     const button = document.querySelector("[data-id='load-more-button']");
     button.addEventListener("click", () => loadMorePokemons(button));
 }
+// #endregion
 
-function resetSearch() {
-    activPokemons = [];
-    const main = document.querySelector("[data-id='content']");
-    main.innerHTML = "";
-    for (let i = 0; i < loadedPokemons.length; i++) {
-        appendCard(loadedPokemons[i], main);
-    }
-    addCardListeners();
-}
-
+// #region Search Pokemon
 function setupSearchButton(button, input) {
     button.addEventListener("click", () => {
         if (input.value.length < 3) return;
@@ -63,19 +44,30 @@ function setupSearch() {
     setupSearchInput(input);
 }
 
+function resetSearch() {
+    activPokemons = [];
+    const main = document.querySelector("[data-id='content']");
+    main.innerHTML = "";
+    for (let i = 0; i < loadedPokemons.length; i++) {
+        appendCard(loadedPokemons[i], main);
+    }
+    addCardListeners();
+}
+// #endregion
+
 async function loadInitialPokemons(loadMoreButton) {
     const pokemonList = await loadPokemons();
     const details = await Promise.all(
         pokemonList.map((pokemon) => fetchPokemonDetails(pokemon.url)),
     );
     renderCards(details);
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     hideSpinner();
     loadMoreButton.disabled = false;
 }
 
 async function init() {
-    showSpinner();
+    // showSpinner();
     const loadMoreButton = document.querySelector(
         "[data-id='load-more-button']",
     );
@@ -84,5 +76,18 @@ async function init() {
     setupLoadMoreButton();
     setupSearch();
 }
-
 init();
+
+// #region Spinner
+function showSpinner() {
+    const spinner = document.createElement("div");
+    spinner.classList.add("spinner-overlay");
+    spinner.innerHTML = `<div class="pokemon-spinner"></div>`;
+    document.body.appendChild(spinner);
+}
+
+function hideSpinner() {
+    const spinner = document.querySelector(".spinner-overlay");
+    if (spinner) spinner.remove();
+}
+// #endregion

@@ -1,0 +1,137 @@
+/* #region Responsive 900px to 1440px */
+@media (min-width: 900px) and (max-width: 1440px) {
+    main {
+        gap: 16px;
+        padding: 28px;
+    }
+
+    button[data-id="card"] {
+        width: calc(20% - 13px);
+    }
+
+    button[data-id="card"] img {
+        width: 110px;
+        height: 110px;
+    }
+}
+/* #endregion */
+
+/* #region Responsive 900px */
+@media (max-width: 900px) {
+    .header-inner {
+        flex-wrap: wrap;
+        padding: 12px 16px;
+        gap: 10px;
+    }
+
+    .header-inline h1 {
+        width: 100%;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .header-inline input {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .header-inline button {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+}
+/* #endregion */
+
+/* #region Responsive 640px to 899px */
+@media (min-width: 640px) and (max-width: 899px) {
+    main {
+        gap: 14px;
+        padding: 20px;
+    }
+
+    button[data-id="card"] {
+        width: calc(25% - 11px);
+    }
+
+    button[data-id="card"] img {
+        width: 100px;
+        height: 100px;
+    }
+}
+/* #endregion */
+
+/* #region Responsive 379px */
+@media (max-width: 379px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .header-inner input {
+        width: 100%;
+    }
+
+    .header-inner button {
+        width: 100%;
+    }
+}
+/* #endregion */
+
+/* #region Responsive 480px to 639px */
+@media (min-width: 480px) and (max-width: 639px) {
+    main {
+        gap: 12px;
+        padding: 12px;
+    }
+
+    button[data-id="card"] {
+        width: calc(33.333% - 8px);
+    }
+
+    button[data-id="card"] img {
+        width: 90px;
+        height: 90px;
+    }
+}
+/* #endregion */
+
+/* #region Responsive 378px */
+@media (max-width: 378px) {
+    main {
+        gap: 8px;
+        padding: 8px;
+    }
+
+    button[data-id="card"] {
+        width: 100%;
+    }
+
+    button[data-id="card"] img {
+        width: 120px;
+        height: 120px;
+    }
+}
+/* #endregion */
+
+/* #region Responsive 375px to 479px */
+@media (min-width: 375px) and (max-width: 479px) {
+    main {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    button[data-id="card"] {
+        width: calc(50% - 5px);
+    }
+
+    button[data-id="card"] img {
+        width: 100px;
+        height: 100px;
+    }
+}
+/* #endregion */
+
+
+
+
+

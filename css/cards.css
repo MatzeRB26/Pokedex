@@ -8,7 +8,7 @@ main{
     margin: 0 auto;
 }
 
-main[data-id="content"]{
+main [data-id="content"]{
     flex: 1;
     display: flex;
     flex-wrap: wrap;
@@ -47,24 +47,36 @@ button[data-id="card"]:hover{
 
 button[data-id="card"] span{
     font-size: 18px;
-    font-weight: 800;
-    color: white;
-    align-self: flex-end;
-    text-transform: capitalize;
-}
-
-button[data-id="card"] .types{
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    font-weight: 700;
+    align-self: flex-start;
+    
 }
 
 button[data-id="card"] h2 {
-    font-size: 24px;
+    font-size: 22px;
 }
 
 button[data-id="card"] img {
-        width: 140px;
-        height: 140px;
-    }
+    width: 140px;
+    height: 140px;
+}
+
+.types {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.type {
+    background: rgba(0, 0, 0, 1);
+    padding: 3px 10px;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffcc00;
+    border: 2px solid #3b4cca;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-transform: capitalize;
+}
