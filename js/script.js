@@ -6,7 +6,8 @@ async function loadMorePokemons(button) {
     currentOffset += POKEMON_PER_LOAD;
     const pokemonList = await loadPokemons();
     const details = await Promise.all(
-        pokemonList.map((pokemon) => fetchPokemonDetails(pokemon.url)),); 
+        pokemonList.map((pokemon) => fetchPokemonDetails(pokemon.url)),
+    );
     renderCards(details);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     hideSpinner();
@@ -23,7 +24,8 @@ function setupLoadMoreButton() {
 // #region Search Pokemon
 function setupSearchButton(button, input) {
     button.addEventListener("click", () => {
-        if (input.value.length < 3) return;
+        if (input.value.length < 3) 
+        return;
         filterPokemons(input.value);
     });
 }
@@ -31,9 +33,14 @@ function setupSearchButton(button, input) {
 function setupSearchInput(input) {
     input.addEventListener("keyup", (e) => {
         if (e.key === "Enter" && input.value.length >= 3) {
-            filterPokemons(input.value);
+        filterPokemons(input.value);
+        document.querySelector("[data-id='load-more-button']").disabled = true;
+        return;
+        document.querySelector("[data-id='load-more-button']").disabled = false;
         }
-        if (input.value.length === 0) resetSearch();
+        if (input.value.length === 0)
+        document.querySelector("[data-id='load-more-button']").disabled = false;
+        resetSearch();
     });
 }
 
@@ -68,9 +75,7 @@ async function loadInitialPokemons(loadMoreButton) {
 
 async function init() {
     // showSpinner();
-    const loadMoreButton = document.querySelector(
-        "[data-id='load-more-button']",
-    );
+    const loadMoreButton = document.querySelector("[data-id='load-more-button']",);
     loadMoreButton.disabled = true;
     await loadInitialPokemons(loadMoreButton);
     setupLoadMoreButton();

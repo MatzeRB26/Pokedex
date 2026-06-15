@@ -88,7 +88,7 @@ function createDialogTopTemplate(pokemon) {
             <button data-id="close-dialog-button" onclick="closeDialog()">❌</button>
             <span class="dialog-id">#${pokemon.id}</span>
             <h2>${pokemon.name.toUpperCase()}</h2>
-            <img data-id="dialog-image" src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
+            <img data-id="dialog-image" src="${pokemon.sprites.other["official-artwork"].front_default}" alt="${pokemon.name}" />
             <div class="types">${createTypeBadges(pokemon.types)}</div>
         </div>
     `;

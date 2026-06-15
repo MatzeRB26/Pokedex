@@ -10,7 +10,7 @@
 
 footer {
     width: 100%;
-    top: 0;
+    bottom: 0;
     display: flex;
     align-items: center;
     background: linear-gradient(to top, rgb(75, 2, 2), rgb(0, 0, 0));

@@ -21,15 +21,15 @@
     src: url("../assets/fonts/nunito-v32-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
-html, body{
+/* html, body{
     height: 100%;
-}
+} */
 
 body {
     display: flex;
     flex-direction: column;
     font-family: "Nunito" , sans-serive;
-    min-height: 100vh;
+    height: 100vh;
     background: url(../assets/icons/Pokedex-bg.jpg);
 }
 
