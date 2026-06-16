@@ -3,14 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="./assets/icons/Pkmfovicon.png" type="image/x-icon" />
+        <link
+            rel="shortcut icon"
+            href="./assets/icons/Pkmfovicon.png"
+            type="image/x-icon"
+        />
         <link rel="stylesheet" href="./css/standard.css" />
         <link rel="stylesheet" href="./css/header.css" />
-        <link rel="stylesheet" href="./css/cards.css"  />
+        <link rel="stylesheet" href="./css/cards.css" />
         <link rel="stylesheet" href="./css/dialog.css" />
         <link rel="stylesheet" href="./css/spinner.css" />
         <link rel="stylesheet" href="./css/footer.css" />
-        <link rel="stylesheet" href="./css/responsive.css">
+        <link rel="stylesheet" href="./css/responsive.css" />
         <script src="./js/api.js" defer></script>
         <script src="./js/template.js" defer></script>
         <script src="./js/render.js" defer></script>
@@ -22,24 +26,28 @@
     <body>
         <header>
             <div class="header-inline">
-            <img src="./assets/icons/pokemon-logo.png" alt="pokémon-logo" />
-            <h1>Gotta Catch 'emAll !</h1>
-            <input data-id="search-input" type="text" placeholder="Search Pokémon..." />
-            <button data-id="search-button">Search</button>
+                <img src="./assets/icons/pokemon-logo.png" alt="pokémon-logo" />
+                <input
+                data-id="search-input"
+                type="text"
+                placeholder="Search Pokemon..."
+                />
+                <button data-id="search-button">Search</button>
+                <p class="search-hint" id="search-hint">Please enter add 3 characters</p>
             </div>
         </header>
-
+        
         <main data-id="content"></main>
-
         
         <div class="more-wrapper">
             <button data-id="load-more-button">Load More</button>
         </div>
-            <footer>
-                <div class="footer-inline">
+        <footer>
+            <div class="footer-inline">
                 <p>Matzes Pokedex &copy; 2026</p>
-                </div>
-            </footer>
-                <dialog data-id="dialog"></dialog>
+                <h1>Gotta Catch 'emAll !</h1>
+            </div>
+        </footer>
+        <dialog data-id="dialog"></dialog>
     </body>
 </html>

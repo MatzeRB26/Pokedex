@@ -1,6 +1,48 @@
+function buildTypeBadgesHtml(types) {
+    let html = "";
+    for (let i = 0; i < types.length; i++) {
+        const typeName = types[i].type.name;
+        html += createTypeBadgeTemplate(typeName);
+    }
+    return html;
+}
+
+function getAbilitiesString(pokemon) {
+    let result = "";
+    for (let i = 0; i < pokemon.abilities.length; i++) {
+        if (i > 0) result += ", ";
+        result += pokemon.abilities[i].ability.name;
+    }
+    return result;
+}
+
+function getPokemonStats(pokemon){
+return [
+        { label: "HP", value: pokemon.stats[0].base_stat },
+        { label: "Attack", value: pokemon.stats[1].base_stat },
+        { label: "Defense", value: pokemon.stats[2].base_stat },
+        { label: "Sp. Atk", value: pokemon.stats[3].base_stat },
+        { label: "Sp. Def", value: pokemon.stats[4].base_stat },
+        { label: "Speed", value: pokemon.stats[5].base_stat },
+    ];
+} 
+
+function buildStatsHtml(pokemon){
+    const stats = getPokemonStats(pokemon);
+    let html = "";
+    for (let i = 0; i < stats.length; i++) {
+        const width = Math.min((stats[i].value / 255) * 100, 100);
+        html += createStatsTabTemplate(stats[i].label, stats[i].value, width);
+    }
+    return html;
+}
+
 function appendCard(pokemon, container) {
+    const type = pokemon.types[0].type.name;
+    const bgColor = getTypeColor(type);
+    const typeBadgesHtml = buildTypeBadgesHtml(pokemon.types);
     const div = document.createElement("div");
-    div.innerHTML = createCardTemplate(pokemon);
+    div.innerHTML = createCardTemplate(pokemon, bgColor, typeBadgesHtml);
     container.appendChild(div.firstElementChild);
 }
 
@@ -13,9 +55,11 @@ function renderCards(pokemonList) {
     addCardListeners();
 }
 
-function findPokemonIndex(pokemon) {
+function findPokemonIndex(pokemon, list) {
+    if (!pokemon || !list) return -1;
     for (let i = 0; i < loadedPokemons.length; i++) {
-        if (loadedPokemons[i].id === pokemon.id) return i;
+        if (list[i] &&  list[i].id === pokemon.id) {
+        return i;}
     }
     return -1;
 }
@@ -28,7 +72,8 @@ function addCardListeners() {
             const id = card.dataset.pokemonId;
             const url = `${BASE_URL}/${id}`;
             const pokemon = await fetchPokemonDetails(url);
-            currentPokemonIndex = findPokemonIndex(pokemon);
+            const list = activePokemons.length > 0 ? activePokemons : loadedPokemons;
+            currentPokemonIndex = findPokemonIndex(pokemon, list);
             openDialog(pokemon);
         };
     }
@@ -46,9 +91,7 @@ function getFilteredPokemons(searchTerm) {
     const filtered = [];
     for (let i = 0; i < loadedPokemons.length; i++) {
         if (
-            loadedPokemons[i].name
-                .toLowerCase()
-                .includes(searchTerm.toLowerCase())
+            loadedPokemons[i].name.toLowerCase().includes(searchTerm.toLowerCase())
         ) {
             filtered.push(loadedPokemons[i]);
         }
@@ -61,38 +104,14 @@ function filterPokemons(searchTerm) {
     const main = document.querySelector("[data-id='content']");
     main.innerHTML = "";
     if (filtered.length === 0) {
+        activePokemons = [];
         showNotFound(main);
         return;
     }
+    activePokemons = filtered;
     for (let i = 0; i < filtered.length; i++) {
         appendCard(filtered[i], main);
     }
     addCardListeners();
-}
-// #endregion
-
-// #region Colors
-function getTypeColor(type) {
-    const colors = {
-        fire: "#7e0000",
-        water: "#0638ad",
-        grass: "#277500d6",
-        electric: "#c69f00",
-        psychic: "#b80138",
-        ice: "#005f5f",
-        dragon: "#4c00ff",
-        dark: "#3f1a01",
-        fairy: "#bc5168",
-        normal: "#858535",
-        fighting: "#631c19",
-        flying: "#2c214d",
-        poison: "#2c122c",
-        ground: "#4c4121",
-        rock: "#B8A038",
-        bug: "#2c2f0a",
-        ghost: "#251938",
-        steel: "#484853",
-    };
-    return colors[type] || "#A8A878";
 }
 // #endregion

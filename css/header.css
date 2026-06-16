@@ -1,29 +1,24 @@
-.header-inline{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 16px 40px;
-    max-width: 1440px;
-    margin: 0 auto;
-}
-
 header {
     width: 100%;
     position: sticky;
     top: 0;
     display: flex;
     align-items: center;
-    gap: 20px;
+
     padding: 16px 40px;
     background: linear-gradient(to bottom, rgb(75, 2, 2), rgb(0, 0, 0));
     margin: 0 auto;
     z-index: 100;
 }
 
-.header-inline h1 {
-    font-size: 22px;
-    color: white;
+.header-inline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 24px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .header-inline img {
@@ -59,4 +54,18 @@ button[data-id="search-button"] {
 button[data-id="search-button"]:hover{
     background: #3b4cca8f;
     box-shadow: 0 0 8px whitesmoke;
+}
+
+.search-hint {
+    display: none;
+    font-size: 14px;
+    color: white;
+    width: 100%;
+    padding: 2px 24px;
+    text-align: center;
+    margin-top: 18px;
+}
+
+.search-hint.visible {
+    display: block;
 }

@@ -1,6 +1,6 @@
 function openDialog(pokemon) {
     const dialog = document.querySelector("[data-id='dialog']");
-    dialog.innerHTML = createDialogTemplate(pokemon);
+    dialog.innerHTML = buildDialogContent(pokemon);
     dialog.showModal();
     document.body.style.overflow = "hidden";
     dialog.addEventListener("click", (e) => {
@@ -15,11 +15,11 @@ function closeDialog() {
 }
 
 function navigateDialog(direction) {
+    const list = activePokemons.length > 0 ? activePokemons : loadedPokemons;
     currentPokemonIndex += direction;
-    if (currentPokemonIndex < 0)
-        currentPokemonIndex = loadedPokemons.length - 1;
-    if (currentPokemonIndex >= loadedPokemons.length) currentPokemonIndex = 0;
-    openDialog(loadedPokemons[currentPokemonIndex]);
+    if (currentPokemonIndex < 0) currentPokemonIndex = list.length - 1;
+    if (currentPokemonIndex >= list.length) currentPokemonIndex = 0;
+    openDialog(list[currentPokemonIndex]);
 }
 
 function switchTab(event, tabId) {
@@ -37,9 +37,7 @@ function switchTab(event, tabId) {
 }
 
 async function fetchEvoChainData(pokemonId) {
-    const speciesResponse = await fetch(
-        `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`,
-    );
+    const speciesResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`,);
     const speciesData = await speciesResponse.json();
     const evoResponse = await fetch(speciesData.evolution_chain.url);
     const evoData = await evoResponse.json();
@@ -56,8 +54,28 @@ async function loadEvoChain() {
     const evoTab = dialog.querySelector("#tab-evo");
     const pokemon = loadedPokemons[currentPokemonIndex];
     const evoChain = await fetchEvoChainData(pokemon.id);
-    const evoDetails = await Promise.all(
-        evoChain.map((name) => fetchPokemonDetails(`${BASE_URL}/${name}`)),
+    const evoDetails = await Promise.all(evoChain.map((name) => fetchPokemonDetails(`${BASE_URL}/${name}`)),
     );
-    evoTab.innerHTML = createEvoChainTemplate(evoDetails);
+    evoTab.innerHTML = buildEvoChainHtml(evoDetails);
 }
+
+function buildEvoChainHtml(evoDetails){
+    let html = "";
+    for (let i = 0; i < evoDetails.length; i++){
+        html += createEvoItemTemplate(evoDetails[i].sprites.front_default,evoDetails[i].name.toUpperCase(),);
+    }
+    return createEvoChainTemplate(html);
+}
+
+function buildDialogContent(pokemon) {
+    const type = pokemon.types[0].type.name;
+    const bgColor = getTypeColor(type);
+    const typeBadgesHtml = buildTypeBadgesHtml(pokemon.types);
+    const mainTabHtml = createMainTabTemplate(pokemon.height / 10,pokemon.weight / 10,pokemon.base_experience,
+    getAbilitiesString(pokemon),
+    );
+    const statsTabHtml = buildStatsHtml(pokemon);
+    return createDialogTemplate(pokemon,bgColor,typeBadgesHtml,mainTabHtml,statsTabHtml,
+    );
+}
+

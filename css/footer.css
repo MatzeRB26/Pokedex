@@ -8,6 +8,11 @@
     margin: 0 auto;
 }
 
+.footer-inline h1 {
+    font-size: 18px;
+    color: white;
+}
+
 footer {
     width: 100%;
     bottom: 0;

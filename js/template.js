@@ -1,18 +1,36 @@
+// #region Card Template
+function createTypeBadgeTemplate(typeName){
+    return`
+        <span class="type ${typeName}">${typeName}</span>
+    `;
+}
+
+function createCardTemplate(pokemon, bgColor, typeBadgesHtml) {
+    return `
+        <button data-id="card" data-pokemon-id="${pokemon.id}" style="background-color: ${bgColor}">
+            <span>#${pokemon.id}</span>
+            <h2>${pokemon.name.toUpperCase()}</h2>
+            <img data-id="card-image" src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
+            <div class="types">${typeBadgesHtml}</div>
+        </button>
+    `;
+}
+// #endregion
+
 // #region Dialog Template
-function createMainTabTemplate(pokemon) {
-    const abilities = pokemon.abilities.map((a) => a.ability.name).join(", ");
+function createMainTabTemplate(height, weight, baseExp, abilities) {
     return `
         <div class="info-row">
             <span class="info-label">Height</span>
-            <span class="info-value">${pokemon.height / 10} m</span>
+            <span class="info-value">${height} m</span>
         </div>
         <div class="info-row">
             <span class="info-label">Weight</span>
-            <span class="info-value">${pokemon.weight / 10} kg</span>
+            <span class="info-value">${weight} kg</span>
         </div>
         <div class="info-row">
             <span class="info-label">Base Exp</span>
-            <span class="info-value">${pokemon.base_experience}</span>
+            <span class="info-value">${baseExp}</span>
         </div>
         <div class="info-row">
             <span class="info-label">Abilities</span>
@@ -21,82 +39,75 @@ function createMainTabTemplate(pokemon) {
     `;
 }
 
-function createStatsTabTemplate(pokemon) {
-    const stats = [
-        { label: "HP", value: pokemon.stats[0].base_stat },
-        { label: "Attack", value: pokemon.stats[1].base_stat },
-        { label: "Defense", value: pokemon.stats[2].base_stat },
-        { label: "Sp. Atk", value: pokemon.stats[3].base_stat },
-        { label: "Sp. Def", value: pokemon.stats[4].base_stat },
-        { label: "Speed", value: pokemon.stats[5].base_stat },
-    ];
-    return stats
-        .map((stat) => `
+function createStatsTabTemplate(label, value, width) { 
+    return `
         <div class="stat-row">
-            <span class="stat-label">${stat.label}</span>
-            <span class="stat-value">${stat.value}</span>
+            <span class="stat-label">${label}</span>
+            <span class="stat-value">${value}</span>
             <div class="stat-bar-bg">
-                <div class="stat-bar" style="width: ${Math.min((stat.value / 255) * 100, 100)}%"></div>
+                <div class="stat-bar" style="width: ${width}%"></div>
             </div>
-        </div>`,
-        ).join("");
-}
-
-function createCardTemplate(pokemon) {
-    const type = pokemon.types[0].type.name;
-    const bgColor = getTypeColor(type);
-    return `
-        <button data-id="card" data-pokemon-id="${pokemon.id}" style="background-color: ${bgColor}">
-            <span>#${pokemon.id}</span>
-            <h2>${pokemon.name.toUpperCase()}</h2>
-            <img data-id="card-image" src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
-            <div class="types">${createTypeBadges(pokemon.types)}</div>
-        </button>
-    `;
-}
-
-function createEvoChainTemplate(evoDetails) {
-    return `
-        <div class="evo-chain"> ${evoDetails.map((pokemon, index) => `${index > 0 ? '<span class="evo-arrow">→</span>' : ""}
-                <div class="evo-item">
-                    <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
-                    <span>${pokemon.name.toUpperCase()}</span>
-                </div>`,).join("")}
         </div>
     `;
 }
 
-function createDialogTopTemplate(pokemon) {
-    const bgColor = getTypeColor(pokemon.types[0].type.name);
+function createEvoItemTemplate(sprite, name) {
+    return`
+        <div class="evo-item">
+            <img src="${sprite}" alt="${name}" />
+            <span>${name}</span>
+        </div>
+    `;
+}
+
+function createEvoChainTemplate(evoChainHtml) { 
+    return `
+        <div class="evo-chain">${evoChainHtml}</div>
+    `;
+}
+
+function createDialogTopTemplate(pokemon, bgColor, typeBadgesHtml) {
     return `
         <div class="dialog-top" style="background-color: ${bgColor}">
             <button data-id="close-dialog-button" onclick="closeDialog()">❌</button>
             <span class="dialog-id">#${pokemon.id}</span>
             <h2>${pokemon.name.toUpperCase()}</h2>
             <img data-id="dialog-image" src="${pokemon.sprites.other["official-artwork"].front_default}" alt="${pokemon.name}" />
-            <div class="types">${createTypeBadges(pokemon.types)}</div>
+            <div class="types">${typeBadgesHtml}</div>
         </div>
     `;
 }
 
-function createDialogTemplate(pokemon) {
-    return `
+function createDialogTemplate(pokemon,bgColor,typeBadgesHtml, mainTabHtml, statsTabHtml,) {
+    return`
         <div class="dialog-inner">
-            ${createDialogTopTemplate(pokemon)}
+            ${createDialogTopTemplate(pokemon, bgColor, typeBadgesHtml)}
             <div class="dialog-bottom" data-id="overlay-pokemon-name">
-                <div class="tabs">
-                    <button class="tab-btn active" onclick="switchTab(event, 'tab-main')">main</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'tab-stats')">stats</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'tab-evo')">evo chain</button>
-                </div>
-                <div id="tab-main" class="tab-content active">${createMainTabTemplate(pokemon)}</div>
-                <div id="tab-stats" class="tab-content">${createStatsTabTemplate(pokemon)}</div>
+                ${createTabsTemplate()}
+                <div id="tab-main" class="tab-content active">${mainTabHtml}</div>
+                <div id="tab-stats" class="tab-content">${statsTabHtml}</div>
                 <div id="tab-evo" class="tab-content"><p>Loading...</p></div>
-                <div class="dialog-nav">
-                    <button data-id="prev-button" onclick="navigateDialog(-1)">←</button>
-                    <button data-id="next-button" onclick="navigateDialog(1)">→</button>
-                </div>
+                ${createDialogNavTemplate()}
             </div>
+        </div>
+    `;
+}
+
+function createTabsTemplate() {
+    return`
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab(event, 'tab-main')">main</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-stats')">stats</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-evo')">evo chain</button>
+        </div>
+    `;
+}
+
+function createDialogNavTemplate() {
+    return`
+        <div class="dialog-nav">
+            <button data-id="prev-button" onclick="navigateDialog(-1)">←</button>
+            <button data-id="next-button" onclick="navigateDialog(1)">→</button>
         </div>
     `;
 }
