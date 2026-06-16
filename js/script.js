@@ -21,6 +21,13 @@ function setupLoadMoreButton() {
 }
 // #endregion
 
+// #region Card Badge
+function createTypeBadges(types) {
+    return types .map((t) => `<span class="type">${t.type.name}</span> `).join("");
+}
+//#endregion
+
+
 // #region Search Pokemon
 function setupSearchButton(button, input) {
     button.addEventListener("click", () => {

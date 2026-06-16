@@ -1,23 +1,3 @@
-// #region Card Templates
-function createTypeBadges(types) {
-    return types
-    .map( (t) => `<span class="type">${t.type.name}</span> `,).join("");
-}
-
-function createCardTemplate(pokemon) {
-    const type = pokemon.types[0].type.name;
-    const bgColor = getTypeColor(type);
-    return `
-        <button data-id="card" data-pokemon-id="${pokemon.id}" style="background-color: ${bgColor}">
-            <span>#${pokemon.id}</span>
-            <h2>${pokemon.name.toUpperCase()}</h2>
-            <img data-id="card-image" src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
-            <div class="types">${createTypeBadges(pokemon.types)}</div>
-        </button>
-    `;
-}
-// #endregion
-
 // #region Dialog Template
 function createMainTabTemplate(pokemon) {
     const abilities = pokemon.abilities.map((a) => a.ability.name).join(", ");
@@ -51,8 +31,7 @@ function createStatsTabTemplate(pokemon) {
         { label: "Speed", value: pokemon.stats[5].base_stat },
     ];
     return stats
-        .map(
-            (stat) => `
+        .map((stat) => `
         <div class="stat-row">
             <span class="stat-label">${stat.label}</span>
             <span class="stat-value">${stat.value}</span>
@@ -60,23 +39,29 @@ function createStatsTabTemplate(pokemon) {
                 <div class="stat-bar" style="width: ${Math.min((stat.value / 255) * 100, 100)}%"></div>
             </div>
         </div>`,
-        )
-        .join("");
+        ).join("");
+}
+
+function createCardTemplate(pokemon) {
+    const type = pokemon.types[0].type.name;
+    const bgColor = getTypeColor(type);
+    return `
+        <button data-id="card" data-pokemon-id="${pokemon.id}" style="background-color: ${bgColor}">
+            <span>#${pokemon.id}</span>
+            <h2>${pokemon.name.toUpperCase()}</h2>
+            <img data-id="card-image" src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
+            <div class="types">${createTypeBadges(pokemon.types)}</div>
+        </button>
+    `;
 }
 
 function createEvoChainTemplate(evoDetails) {
     return `
-        <div class="evo-chain">
-            ${evoDetails
-                .map(
-                    (pokemon, index) => `
-                ${index > 0 ? '<span class="evo-arrow">→</span>' : ""}
+        <div class="evo-chain"> ${evoDetails.map((pokemon, index) => `${index > 0 ? '<span class="evo-arrow">→</span>' : ""}
                 <div class="evo-item">
                     <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
                     <span>${pokemon.name.toUpperCase()}</span>
-                </div>`,
-                )
-                .join("")}
+                </div>`,).join("")}
         </div>
     `;
 }
@@ -114,31 +99,5 @@ function createDialogTemplate(pokemon) {
             </div>
         </div>
     `;
-}
-// #endregion
-
-// #region Colors
-function getTypeColor(type) {
-    const colors = {
-        fire: "#7e0000",
-        water: "#0638ad",
-        grass: "#277500d6",
-        electric: "#c69f00",
-        psychic: "#b80138",
-        ice: "#005f5f",
-        dragon: "#4c00ff",
-        dark: "#3f1a01",
-        fairy: "#bc5168",
-        normal: "#858535",
-        fighting: "#631c19",
-        flying: "#2c214d",
-        poison: "#2c122c",
-        ground: "#4c4121",
-        rock: "#B8A038",
-        bug: "#2c2f0a",
-        ghost: "#251938",
-        steel: "#484853",
-    };
-    return colors[type] || "#A8A878";
 }
 // #endregion

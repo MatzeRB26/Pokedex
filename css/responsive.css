@@ -120,6 +120,7 @@
 }
 /* #endregion */
 
+/* #region Responsive 320px to 374px */
 @media (min-width: 320px)and (max-width: 374px){
     button[data-id="card"] {
         width: 216px;
@@ -146,9 +147,9 @@
     }
     
     .footer-inline p {
-        display: none;
+        font-size: 14px;
     }
 }
-
+/* #endregion */
 
 
