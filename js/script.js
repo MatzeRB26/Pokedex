@@ -9,7 +9,7 @@ async function loadMorePokemons(button) {
         pokemonList.map((pokemon) => fetchPokemonDetails(pokemon.url)),
     );
     renderCards(details);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     hideSpinner();
     button.disabled = false;
     button.textContent = "Load More";
@@ -32,13 +32,14 @@ function setupSearchButton(button, input) {
         }
         hint.classLIst.remove("visible");
         filterPokemons(input.value);
-        showClearButton();
     });
 }
 
 function setupSearchInput(input) {
+    const loadMoreButton = document.querySelector("[data-id='load-more-button']");
     input.addEventListener("keyup", (e) => {const hint = document.getElementById("search-hint");
         if (input.value.length >= 3) {
+            loadMoreButton.disabled = true; 
             hint.classList.remove("visible");
             filterPokemons(input.value);
         }
@@ -46,6 +47,7 @@ function setupSearchInput(input) {
             hint.classList.add("visible");
         }
         if (input.value.length === 0) {
+            loadMoreButton.disabled = false;
             hint.classList.remove("visible");
             resetSearch();
         }
@@ -60,6 +62,8 @@ function setupSearch() {
 }
 
 function resetSearch() {
+    const loadMoreButton = document.querySelector("[data-id='load-more-button']");
+    loadMoreButton.disabled = false;
     activPokemons = [];
     const main = document.querySelector("[data-id='content']");
     main.innerHTML = "";
@@ -77,12 +81,13 @@ async function loadInitialPokemons(loadMoreButton) {
         pokemonList.map((pokemon) => fetchPokemonDetails(pokemon.url)),
     );
     renderCards(details);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     hideSpinner();
     loadMoreButton.disabled = false;
 }
 
 async function init() {
+    showSpinner();
     const loadMoreButton = document.querySelector("[data-id='load-more-button']",);
     loadMoreButton.disabled = true;
     await loadInitialPokemons(loadMoreButton);

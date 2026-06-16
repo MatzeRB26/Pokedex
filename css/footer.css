@@ -1,3 +1,19 @@
+footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: auto;
+    background: linear-gradient(to top, rgb(75, 2, 2), rgb(0, 0, 0));
+    z-index: 100;
+
+    p {
+    font-size: 28px; 
+    color: white;
+}
+}
+
+
 .footer-inline{
     display: flex;
     justify-content: center;
@@ -11,21 +27,6 @@
 .footer-inline h1 {
     font-size: 18px;
     color: white;
-}
-
-footer {
-    width: 100%;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    background: linear-gradient(to top, rgb(75, 2, 2), rgb(0, 0, 0));
-    margin: 0 auto;
-    z-index: 100;
-
-    p {
-    font-size: 28px; 
-    color: white;
-}
 }
 
 .more-wrapper {

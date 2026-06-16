@@ -40,7 +40,7 @@ function createMainTabTemplate(height, weight, baseExp, abilities) {
 }
 
 function createStatsTabTemplate(label, value, width) { 
-    return `
+    return`
         <div class="stat-row">
             <span class="stat-label">${label}</span>
             <span class="stat-value">${value}</span>
@@ -61,7 +61,7 @@ function createEvoItemTemplate(sprite, name) {
 }
 
 function createEvoChainTemplate(evoChainHtml) { 
-    return `
+    return`
         <div class="evo-chain">${evoChainHtml}</div>
     `;
 }

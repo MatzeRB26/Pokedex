@@ -1,3 +1,4 @@
+// #region Type Badges
 function buildTypeBadgesHtml(types) {
     let html = "";
     for (let i = 0; i < types.length; i++) {
@@ -36,7 +37,9 @@ function buildStatsHtml(pokemon){
     }
     return html;
 }
+// #endregion
 
+// #region render Cards
 function appendCard(pokemon, container) {
     const type = pokemon.types[0].type.name;
     const bgColor = getTypeColor(type);
@@ -78,6 +81,7 @@ function addCardListeners() {
         };
     }
 }
+// #endregion
 
 function showNotFound(main) {
     const notFound = document.createElement("p");

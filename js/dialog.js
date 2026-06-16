@@ -1,3 +1,4 @@
+// #region Dialog(Card)
 function openDialog(pokemon) {
     const dialog = document.querySelector("[data-id='dialog']");
     dialog.innerHTML = buildDialogContent(pokemon);
@@ -35,7 +36,9 @@ function switchTab(event, tabId) {
     document.getElementById(tabId).classList.add("active");
     if (tabId === "tab-evo") loadEvoChain();
 }
+// #endregion
 
+// #region EvoChain
 async function fetchEvoChainData(pokemonId) {
     const speciesResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`,);
     const speciesData = await speciesResponse.json();
@@ -78,4 +81,4 @@ function buildDialogContent(pokemon) {
     return createDialogTemplate(pokemon,bgColor,typeBadgesHtml,mainTabHtml,statsTabHtml,
     );
 }
-
+// #endregion

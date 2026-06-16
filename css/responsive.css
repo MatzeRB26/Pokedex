@@ -56,6 +56,10 @@
         width: 100px;
         height: 100px;
     }
+
+    .footer-inline h1{
+        display: none;
+    }
 }
 /* #endregion */
 

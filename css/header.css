@@ -58,12 +58,10 @@ button[data-id="search-button"]:hover{
 
 .search-hint {
     display: none;
+    text-align: center;
+    width: 100%;
     font-size: 14px;
     color: white;
-    width: 100%;
-    padding: 2px 24px;
-    text-align: center;
-    margin-top: 18px;
 }
 
 .search-hint.visible {
