@@ -24,7 +24,7 @@ function setupLoadMoreButton() {
 // #region Search-Pokemon
 function setupSearchButton(button, input) {
     button.addEventListener("click", () => {
-        const hint = document.get;
+        const hint = document.get
         ElementById("search-hint");
         if (input.value.length < 3) {
             hint.classLIst.add("visible");
