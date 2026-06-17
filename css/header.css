@@ -27,6 +27,7 @@ header {
     align-items: center;
     width: 180px;
     height: 80px;
+    cursor: pointer;
 }
 
 input[data-id="search-input"] {
