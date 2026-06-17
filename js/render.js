@@ -92,7 +92,7 @@ function showNotFound(main) {
 }
 // #endregion
 
-// #region Filter function Pokemon
+// #region Filter-function
 function getFilteredPokemons(searchTerm) {
     const filtered = [];
     for (let i = 0; i < loadedPokemons.length; i++) {
