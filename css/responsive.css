@@ -80,24 +80,6 @@
 }
 /* #endregion */
 
-/* #region Responsive 378px */
-@media (max-width: 378px) {
-    main {
-        gap: 8px;
-        padding: 8px;
-    }
-
-    button[data-id="card"] {
-        width: 100%;
-    }
-
-    button[data-id="card"] img {
-        width: 160px;
-        height: 160px;
-    }
-}
-/* #endregion */
-
 /* #region Responsive 375px to 479px */
 @media (min-width: 375px) and (max-width: 479px) {
     main {

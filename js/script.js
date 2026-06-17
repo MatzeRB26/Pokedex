@@ -21,7 +21,7 @@ function setupLoadMoreButton() {
 }
 // #endregion
 
-// #region Search Pokemon
+// #region Search-Pokemon
 function setupSearchButton(button, input) {
     button.addEventListener("click", () => {
         const hint = document.get;

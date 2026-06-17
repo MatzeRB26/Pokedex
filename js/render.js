@@ -1,45 +1,4 @@
-// #region Type Badges
-function buildTypeBadgesHtml(types) {
-    let html = "";
-    for (let i = 0; i < types.length; i++) {
-        const typeName = types[i].type.name;
-        html += createTypeBadgeTemplate(typeName);
-    }
-    return html;
-}
-
-function getAbilitiesString(pokemon) {
-    let result = "";
-    for (let i = 0; i < pokemon.abilities.length; i++) {
-        if (i > 0) result += ", ";
-        result += pokemon.abilities[i].ability.name;
-    }
-    return result;
-}
-
-function getPokemonStats(pokemon){
-return [
-        { label: "HP", value: pokemon.stats[0].base_stat },
-        { label: "Attack", value: pokemon.stats[1].base_stat },
-        { label: "Defense", value: pokemon.stats[2].base_stat },
-        { label: "Sp. Atk", value: pokemon.stats[3].base_stat },
-        { label: "Sp. Def", value: pokemon.stats[4].base_stat },
-        { label: "Speed", value: pokemon.stats[5].base_stat },
-    ];
-} 
-
-function buildStatsHtml(pokemon){
-    const stats = getPokemonStats(pokemon);
-    let html = "";
-    for (let i = 0; i < stats.length; i++) {
-        const width = Math.min((stats[i].value / 255) * 100, 100);
-        html += createStatsTabTemplate(stats[i].label, stats[i].value, width);
-    }
-    return html;
-}
-// #endregion
-
-// #region render Cards
+// #region render(Cards)
 function appendCard(pokemon, container) {
     const type = pokemon.types[0].type.name;
     const bgColor = getTypeColor(type);
@@ -83,12 +42,55 @@ function addCardListeners() {
 }
 // #endregion
 
+// #region Type Badges
+function buildTypeBadgesHtml(types) {
+    let html = "";
+    for (let i = 0; i < types.length; i++) {
+        const typeName = types[i].type.name;
+        html += createTypeBadgeTemplate(typeName);
+    }
+    return html;
+}
+
+function getAbilitiesString(pokemon) {
+    let result = "";
+    for (let i = 0; i < pokemon.abilities.length; i++) {
+        if (i > 0) result += ", ";
+        result += pokemon.abilities[i].ability.name;
+    }
+    return result;
+}
+
+function getPokemonStats(pokemon){
+return [
+        { label: "HP", value: pokemon.stats[0].base_stat },
+        { label: "Attack", value: pokemon.stats[1].base_stat },
+        { label: "Defense", value: pokemon.stats[2].base_stat },
+        { label: "Sp. Atk", value: pokemon.stats[3].base_stat },
+        { label: "Sp. Def", value: pokemon.stats[4].base_stat },
+        { label: "Speed", value: pokemon.stats[5].base_stat },
+    ];
+} 
+
+function buildStatsHtml(pokemon){
+    const stats = getPokemonStats(pokemon);
+    let html = "";
+    for (let i = 0; i < stats.length; i++) {
+        const width = Math.min((stats[i].value / 255) * 100, 100);
+        html += createStatsTabTemplate(stats[i].label, stats[i].value, width);
+    }
+    return html;
+}
+// #endregion
+
+// #region Not Found
 function showNotFound(main) {
     const notFound = document.createElement("p");
     notFound.setAttribute("data-id", "not-found");
     notFound.textContent = "No match found.";
     main.appendChild(notFound);
 }
+// #endregion
 
 // #region Filter function Pokemon
 function getFilteredPokemons(searchTerm) {
