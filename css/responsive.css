@@ -76,6 +76,10 @@
         padding: 8px;
     }
 
+    .header-inline{
+        flex-wrap: wrap;
+    }
+
     button[data-id="card"] {
         width: 160px;
     }
@@ -93,6 +97,15 @@
     .types {
         gap: 5px;
     }
+
+    .footer-inline h1 {
+    display: none;
+}
+
+.footer-inline p {
+        font-size: 18px;
+    }
+
 }
 /* #endregion */
 
@@ -120,6 +133,10 @@
         padding: 5px;
     }
 
+    .header-inline{
+        flex-wrap: wrap;
+    }
+
     button[data-id="card"] {
         width: calc(50% - 5px);
     }
@@ -135,6 +152,14 @@
 
     .types {
         gap: 5px;
+    }
+
+    .footer-inline h1 {
+    display: none;
+}
+
+.footer-inline p {
+        font-size: 16px;
     }
 }
 /* #endregion */
@@ -168,6 +193,7 @@
     .footer-inline h1 {
     display: none;
 }
+
     .footer-inline p {
         font-size: 16px;
     }
